@@ -35,7 +35,7 @@ public class TitleFragment extends ListFragment {
         }
 
         if(mDualPane){
-            getListView().getChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            getListView().getChoiceMode();
             showDetails(mCurCheckPosition);
         }
     }
@@ -54,8 +54,7 @@ public class TitleFragment extends ListFragment {
     /*
     * Proper hero data to be displayed linked with the indices of the arrays
     * */
-    void  showDetails(int index){
-        //
+    void showDetails(int index){
         mCurCheckPosition = index;
         //check if we are on horizontal or vertical
         if(mDualPane){
@@ -73,12 +72,12 @@ public class TitleFragment extends ListFragment {
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
             }
-            else{
-                Intent i = new Intent();
-                i.setClass(getActivity(), DetailsActivity.class);
-                i.putExtra("index",index);
-                startActivity(i);
-            }
+        }
+        else{
+            Intent i = new Intent();
+            i.setClass(getActivity(), DetailsActivity.class);
+            i.putExtra("index",index);
+            startActivity(i);
         }
     }
 }

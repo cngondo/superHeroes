@@ -19,8 +19,10 @@ public class DetailsActivity extends Activity {
 
         if(savedInstanceState == null){
             DetailsFragment details = new DetailsFragment();
+
+            details.setArguments(getIntent().getExtras());
+
+            getFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
         }
-
-
     }
 }
